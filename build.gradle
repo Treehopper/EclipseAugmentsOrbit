@@ -24,10 +24,10 @@ def timestamp = getTimestamp()
 platform {
     featureId="eu.hohenegger.orbit.feature"
     featureName="Eclipse Augs Dependencies missing in Eclipse Orbit"
-    featureVersion='1.0.1'
+    featureVersion='1.0.2'
     featureProvider="www.hohenegger.eu"
     categoryName="Eclipse Augs Dependencies"
-    updateSiteDir=new File('1.0.1')
+    //updateSiteDir=new File('1.0.2')
 
 	defaultQualifier = "${timestamp}"
     useBndHashQualifiers = false
@@ -35,20 +35,27 @@ platform {
     defaultQualifierMap.prefix = ''
     fetchSources = true
 
-    feature(id: 'eu.hohenegger.swagger.feature', name: 'Swagger Dependencies', version: '1.0.1') {
+    feature(id: 'eu.hohenegger.swagger.feature', name: 'Swagger Dependencies', version: '1.0.2') {
 		bundle(group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.0.0') {}
 
-		bundle(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.25.1') {}
-		bundle(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: '2.25.1') {}
-		bundle(group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.25.1') {}
-
+		bundle(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.25.1') {
+            exclude group: 'javax.ws.rs', module: 'javax.ws.rs-api'
+        }
+        bundle(group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '2.25.1') {
+            exclude group: 'javax.ws.rs', module: 'javax.ws.rs-api'
+        }
+		bundle(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: '2.25.1') {
+            exclude group: 'javax.ws.rs', module: 'javax.ws.rs-api'
+        }
+		bundle(group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.25.1') {
+            exclude group: 'javax.ws.rs', module: 'javax.ws.rs-api'
+        }
+        
 		bundle(group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.7.5') {}
 		bundle(group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.7.5') {}
 		bundle(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.5') {}
 		bundle(group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.7.5') {}
-
-        bundle(group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1') {}
-
+        
         // provided dependency of org.glassfish.jersey.core:jersey-server:2.25.1
         bnd(group: 'org.glassfish.jersey.ext', name: 'jersey-entity-filtering') {
             optionalImport 'org.glassfish.jersey.server',
@@ -64,8 +71,8 @@ platform {
 
     // If you have an Eclipse installation available, you may want to set the env. variable
     // ECLIPSE_HOME with its path, that will prevent the BND plugin to download it.
-    if ( System.getenv("ECLIPSE_HOME") != null )
-        eclipseHome = new File("System.getenv("ECLIPSE_HOME")")
+    // if ( System.getenv("ECLIPSE_HOME") != null )
+    //     eclipseHome = new File("System.getenv("ECLIPSE_HOME")")
 }
 def getTimestamp() {
     def date = new Date()
