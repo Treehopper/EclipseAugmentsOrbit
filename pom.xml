@@ -17,6 +17,7 @@
 			1.0.0/updatesite/
 			1.0.1/updatesite/
 			1.0.2/updatesite/
+			1.0.3/updatesite/
 		</generate-composite-site.childSites>
 
 	</properties>
