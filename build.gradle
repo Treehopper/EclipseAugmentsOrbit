@@ -64,6 +64,164 @@ platform {
         }
     }
 
+    feature(id: 'eu.hohenegger.liquibase.feature', name: 'Liquibase Dependencies', version: '1.0.0') {
+		bundle(group: 'org.liquibase', name: 'liquibase-core', version: '3.8.4') {
+            // we get all of these from eclipse orbit
+            exclude group: 'org.slf4j', module: 'slf4j-api'
+            exclude group: 'org.yaml', module: 'snakeyaml'
+            exclude group: 'javax.xml.bind', module: 'jaxb-api'
+
+            // we don't need these
+            exclude group: 'ch.qos.logback', module: 'logback-classic'
+            exclude group: 'ch.qos.logback', module: 'logback-core'
+        }
+
+        bnd(group: 'org.liquibase', name: 'liquibase-core') {
+            optionalImport 'ch.qos.logback.classic',
+                           'ch.qos.logback.classic.encoder',
+                           'ch.qos.logback.classic.spi',
+                           'ch.qos.logback.core',
+                           'ch.qos.logback.core.encoder',
+                           'ch.qos.logback.core.filter',
+                           'ch.qos.logback.core.joran.spi',
+                           'ch.qos.logback.core.spi',
+                           'com.datical.liquibase.ext.appdba.markunused.change',
+                           'com.datical.liquibase.ext.appdba.synonym',
+                           'com.datical.liquibase.ext.appdba.synonym.change',
+                           'com.datical.liquibase.ext.config',
+                           'com.datical.liquibase.ext.license',
+                           'com.datical.liquibase.ext.storedlogic',
+                           'com.datical.liquibase.ext.storedlogic.checkconstraint',
+                           'com.datical.liquibase.ext.storedlogic.checkconstraint.change',
+                           'com.datical.liquibase.ext.storedlogic.checkconstraint.postgres',
+                           'com.datical.liquibase.ext.storedlogic.databasepackage',
+                           'com.datical.liquibase.ext.storedlogic.databasepackage.change',
+                           'com.datical.liquibase.ext.storedlogic.function',
+                           'com.datical.liquibase.ext.storedlogic.function.change',
+                           'com.datical.liquibase.ext.storedlogic.function.postgres',
+                           'com.datical.liquibase.ext.storedlogic.trigger',
+                           'com.datical.liquibase.ext.storedlogic.trigger.change',
+                           'com.datical.liquibase.ext.storedlogic.trigger.postgres',
+                           'com.datical.liquibase.ext.util',
+                           'edu.umd.cs.findbugs.annotations',
+                           'javax.annotation',
+                           'javax.crypto',
+                           'javax.crypto.spec',
+                           'javax.naming',
+                           'javax.security.auth.x500',
+                           'javax.servlet',
+                           'javax.servlet.http',
+                           'javax.sql',
+                           'javax.swing',
+                           'javax.xml.parsers',
+                           'javax.xml.transform',
+                           'javax.xml.transform.dom',
+                           'javax.xml.transform.stream',
+                           'javax.xml.validation',
+                           'liquibase',
+                           'liquibase.change',
+                           'liquibase.change.core',
+                           'liquibase.changelog',
+                           'liquibase.changelog.column',
+                           'liquibase.changelog.filter',
+                           'liquibase.changelog.visitor',
+                           'liquibase.command',
+                           'liquibase.command.core',
+                           'liquibase.configuration',
+                           'liquibase.database',
+                           'liquibase.database.core',
+                           'liquibase.database.jvm',
+                           'liquibase.datatype',
+                           'liquibase.datatype.core',
+                           'liquibase.dbdoc',
+                           'liquibase.diff',
+                           'liquibase.diff.compare',
+                           'liquibase.diff.compare.core',
+                           'liquibase.diff.output',
+                           'liquibase.diff.output.changelog',
+                           'liquibase.diff.output.changelog.core',
+                           'liquibase.diff.output.report',
+                           'liquibase.exception',
+                           'liquibase.executor',
+                           'liquibase.executor.jvm',
+                           'liquibase.integration.ant.logging',
+                           'liquibase.integration.ant.type',
+                           'liquibase.io',
+                           'liquibase.license',
+                           'liquibase.listener',
+                           'liquibase.lockservice',
+                           'liquibase.logging',
+                           'liquibase.logging.core',
+                           'liquibase.osgi',
+                           'liquibase.parser',
+                           'liquibase.parser.core',
+                           'liquibase.parser.core.xml',
+                           'liquibase.parser.core.yaml',
+                           'liquibase.precondition',
+                           'liquibase.precondition.core',
+                           'liquibase.resource',
+                           'liquibase.sdk.convert',
+                           'liquibase.sdk.database',
+                           'liquibase.sdk.exception',
+                           'liquibase.serializer',
+                           'liquibase.serializer.core.json',
+                           'liquibase.serializer.core.string',
+                           'liquibase.serializer.core.xml',
+                           'liquibase.serializer.core.yaml',
+                           'liquibase.servicelocator',
+                           'liquibase.snapshot',
+                           'liquibase.snapshot.jvm',
+                           'liquibase.sql',
+                           'liquibase.sql.visitor',
+                           'liquibase.sqlgenerator',
+                           'liquibase.sqlgenerator.core',
+                           'liquibase.statement',
+                           'liquibase.statement.core',
+                           'liquibase.structure',
+                           'liquibase.structure.core',
+                           'liquibase.util',
+                           'liquibase.util.beans',
+                           'liquibase.util.csv',
+                           'liquibase.util.csv.opencsv',
+                           'liquibase.util.csv.opencsv.enums',
+                           'liquibase.util.csv.opencsv.stream.reader',
+                           'liquibase.util.file',
+                           'liquibase.util.grammar',
+                           'liquibase.util.ui',
+                           'liquibase.util.xml',
+                           'org.apache.commons.cli',
+                           'org.apache.tools.ant',
+                           'org.apache.tools.ant.taskdefs',
+                           'org.apache.tools.ant.types',
+                           'org.apache.tools.ant.types.resources',
+                           'org.apache.tools.ant.util',
+                           'org.osgi.framework',
+                           'org.osgi.framework.wiring',
+                           'org.springframework.beans.factory',
+                           'org.springframework.context',
+                           'org.springframework.core.io',
+                           'org.springframework.core.io.support',
+                           'org.w3c.dom',
+                           'org.xml.sax',
+                           'org.xml.sax.ext',
+                           'org.xml.sax.helpers',
+                           'org.apache.log'
+
+            // Actually needed:
+            // 'org.slf4j'
+            // 'javax.activation'
+            // 'javax.xml.bind'
+            // 'javax.xml.bind.annotation'
+            // 'javax.xml.bind.annotation.adapters'
+            // 'org.yaml.snakeyaml'
+            // 'org.yaml.snakeyaml.constructor'
+            // 'org.yaml.snakeyaml.introspector'
+            // 'org.yaml.snakeyaml.nodes'
+            // 'org.yaml.snakeyaml.representer'
+            // 'org.yaml.snakeyaml.resolver'
+        }
+    }
+
     override {
         optionalImport 'junit.framework.*', 'org.junit.*', //only for tests
                        'org.apache.log'
