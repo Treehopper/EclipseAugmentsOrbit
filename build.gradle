@@ -35,7 +35,7 @@ platform {
     defaultQualifierMap.prefix = ''
     fetchSources = true
 
-    feature(id: 'eu.hohenegger.swagger.feature', name: 'Swagger Dependencies', version: '1.0.2') {
+    feature(id: 'eu.hohenegger.swagger.dependencies', name: 'Swagger Dependencies', version: '1.0.2') {
 		bundle(group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.0.0') {}
 
 		bundle(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.25.1') {
@@ -64,7 +64,7 @@ platform {
         }
     }
 
-    feature(id: 'eu.hohenegger.liquibase.feature', name: 'Liquibase Dependencies', version: '1.0.0') {
+    feature(id: 'eu.hohenegger.liquibase.dependencies', name: 'Liquibase Dependencies', version: '1.0.0') {
 		bundle(group: 'org.liquibase', name: 'liquibase-core', version: '3.8.4') {
             // we get all of these from eclipse orbit
             exclude group: 'org.slf4j', module: 'slf4j-api'
